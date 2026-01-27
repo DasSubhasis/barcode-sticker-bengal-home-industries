@@ -1,0 +1,38 @@
+{
+  "container": {
+    "width": "105mm",
+    "height": "25mm",
+    "border": "no",
+    "paddingTop": "0mm",
+    "paddingLeft": "1mm",
+    "paddingBottom": "0mm"
+  },
+  "labelBox": {
+    "width": "50mm",
+    "height": "25mm",
+    "border": "no",
+    "paddingTop": "0mm",
+    "paddingLeft": "1mm",
+    "paddingBottom": "0mm"
+  },
+  "gapBetweenLabel": {
+    "paddingTop": "0mm",
+    "paddingLeft": "0.2mm",
+    "paddingBottom": "0mm"
+  },
+  "headerPanel": {
+    "paddingTop": "1mm",
+    "paddingLeft": "0mm",
+    "paddingBottom": "0mm"
+  },
+  "bodyPanel": {
+    "paddingTop": "0.5mm",
+    "paddingLeft": "1mm",
+    "paddingBottom": "0mm"
+  },
+  "footerPanel": {
+    "paddingTop": "0mm",
+    "paddingLeft": "0mm",
+    "paddingBottom": "0mm"
+  }
+}
