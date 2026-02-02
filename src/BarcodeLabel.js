@@ -3,22 +3,42 @@ import JsBarcode from "jsbarcode";
 
 const BarcodeLabel = React.forwardRef((props, ref) => {
   const [config, setConfig] = useState(null); // Store the config
+  const [settings, setSettings] = useState(null); // Store the settings
   const barcodeRefs = useRef([React.createRef(), React.createRef()]);
 
-  // Fetch config.json file
+  // Fetch config.json and settings.json files
   useEffect(() => {
-    fetch("/config.json")
-      .then((response) => response.json())
-      .then((data) => {
-        setConfig(data); // Set the fetched config data
-      })
-      .catch((error) => {
-        console.error("Error fetching configuration:", error);
-      });
+    // Check localStorage first for settings
+    const savedSettings = localStorage.getItem("printerSettings");
+    
+    if (savedSettings) {
+      Promise.all([
+        fetch("/config.json").then((response) => response.json()),
+      ])
+        .then(([configData]) => {
+          setConfig(configData);
+          setSettings(JSON.parse(savedSettings));
+        })
+        .catch((error) => {
+          console.error("Error fetching configuration:", error);
+        });
+    } else {
+      Promise.all([
+        fetch("/config.json").then((response) => response.json()),
+        fetch("/settings.json").then((response) => response.json()),
+      ])
+        .then(([configData, settingsData]) => {
+          setConfig(configData);
+          setSettings(settingsData);
+        })
+        .catch((error) => {
+          console.error("Error fetching configuration:", error);
+        });
+    }
   }, []);
 
   useEffect(() => {
-    if (config) {
+    if (config && settings) {
       // Generate barcodes for visible labels
       const refsToUse = props.isPair
         ? barcodeRefs.current
@@ -34,9 +54,9 @@ const BarcodeLabel = React.forwardRef((props, ref) => {
         });
       });
     }
-  }, [props.barcodeValue, config, props.isPair]);
+  }, [props.barcodeValue, config, settings, props.isPair]);
 
-  if (!config) {
+  if (!config || !settings) {
     return <div>Loading configuration...</div>; // Display loading until config is fetched
   }
 
@@ -49,11 +69,18 @@ const BarcodeLabel = React.forwardRef((props, ref) => {
     footerPanel,
   } = config;
 
+  // Use settings for dimensions
+  const containerWidth = settings.rollWidth + settings.unit;
+  const containerHeight = settings.stickerHeight + settings.unit;
+  const labelWidth = settings.stickerWidth + settings.unit;
+  const labelHeight = settings.stickerHeight + settings.unit;
+  const labelGap = settings.gapBetweenStickers + settings.unit;
+
   const Label = ({ barcodeRef }) => (
     <div
       style={{
-        width: labelBox.width,
-        height: labelBox.height,
+        width: labelWidth,
+        height: labelHeight,
         border: "none",
         borderRadius: "5px",
         textAlign: "center",
@@ -126,8 +153,8 @@ const BarcodeLabel = React.forwardRef((props, ref) => {
         display: "flex",
         justifyContent: "flex-start",
         alignItems: "center",
-        width: container.width,
-        height: container.height,
+        width: containerWidth,
+        height: containerHeight,
         border: container.border === "yes" ? "1px solid black" : "none",
         paddingTop: container.paddingTop,
         paddingLeft: container.paddingLeft,
@@ -138,7 +165,7 @@ const BarcodeLabel = React.forwardRef((props, ref) => {
       <Label barcodeRef={barcodeRefs.current[0]} />
       {props.isPair && (
         <>
-          <div style={{ paddingLeft: "1mm" }}></div>
+          <div style={{ paddingLeft: labelGap }}></div>
           <Label barcodeRef={barcodeRefs.current[1]} />
         </>
       )}

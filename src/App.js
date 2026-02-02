@@ -1,9 +1,11 @@
 // src/App.js
 import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PrintBarcode from "./PrintBarcode";
+import Settings from "./Settings";
 import Zicorp from "./Zicorp.png";
 
-function App() {
+function HomePage() {
   return (
     <div className="App">
       <div
@@ -36,6 +38,17 @@ function App() {
       </div>
       <PrintBarcode />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/settings" element={<Settings />} />
+      </Routes>
+    </Router>
   );
 }
 

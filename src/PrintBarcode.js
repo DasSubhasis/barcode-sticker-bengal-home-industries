@@ -1,10 +1,12 @@
 // PrintBarcode.js
 import React, { useState, useRef } from "react";
 import { useReactToPrint } from "react-to-print";
+import { useNavigate } from "react-router-dom";
 import BarcodeLabel from "./BarcodeLabel";
 import FileSelector from "./FileSelector";
 
 const PrintBarcode = () => {
+  const navigate = useNavigate();
   const printContainerRef = useRef();
   const handlePrint = useReactToPrint({
     content: () => printContainerRef.current,
@@ -75,8 +77,21 @@ const PrintBarcode = () => {
 
   return (
     <div>
-      <div style={{ margin: "10px" }}>
+      <div style={{ margin: "10px", display: "flex", gap: "10px" }}>
         <button onClick={handlePrint}>Print Barcode</button>
+        <button
+          onClick={() => navigate("/settings")}
+          style={{
+            border: "none",
+            padding: "8px 16px",
+            borderRadius: "4px",
+            cursor: "pointer",
+            fontSize: "18px",
+          }}
+          title="Settings"
+        >
+          ⚙️
+        </button>
       </div>
       <div ref={printContainerRef}>
         {showFileSelector && (

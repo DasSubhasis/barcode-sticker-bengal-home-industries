@@ -1,0 +1,8 @@
+{
+  "pin": "1234",
+  "stickerWidth": "50",
+  "stickerHeight": "25",
+  "rollWidth": "105",
+  "gapBetweenStickers": "0.2",
+  "unit": "mm"
+}
