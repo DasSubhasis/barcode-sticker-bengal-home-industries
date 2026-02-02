@@ -22,6 +22,8 @@ const PrintBarcode = () => {
       Quantity: item.quantity,
       MRP: item.mrp,
       SpecialCode: item.specialCode,
+      ItemType: item.itemType || "CN",
+      GodownCode: item.godownCode || "",
     }));
     setBarcodes(filteredData);
     setShowFileSelector(false);
@@ -45,6 +47,8 @@ const PrintBarcode = () => {
               quantity={barcode.Quantity}
               mrp={barcode.MRP}
               special_code={barcode.SpecialCode}
+              itemType={barcode.ItemType}
+              godownCode={barcode.GodownCode}
               isPair={true}
             />
           </div>
@@ -65,6 +69,8 @@ const PrintBarcode = () => {
               quantity={barcode.Quantity}
               mrp={barcode.MRP}
               special_code={barcode.SpecialCode}
+              itemType={barcode.ItemType}
+              godownCode={barcode.GodownCode}
               isPair={false}
             />
           </div>

@@ -118,7 +118,8 @@ const BarcodeLabel = React.forwardRef((props, ref) => {
         <table style={{ borderSpacing: 0, width: "100%" }}>
           <tbody>
             <tr style={{ height: "1px" }}>
-              <td colSpan="2" style={{ lineHeight: 0.8 }}>{props.itemName}</td>
+              <td style={{ lineHeight: 0.8, width: "50%" }}>{props.itemName}</td>
+              <td style={{ lineHeight: 0.8, width: "50%", textAlign: "right", paddingRight: bodyPanel.paddingLeft }}>{props.godownCode}</td>
             </tr>
             <tr style={{ height: "1px" }}>
               <td style={{ lineHeight: 0.8, width: "50%" }}>MRP- {props.mrp}</td>
@@ -141,7 +142,7 @@ const BarcodeLabel = React.forwardRef((props, ref) => {
           paddingBottom: footerPanel.paddingBottom,
         }}
       >
-        {props.special_code}
+        {props.itemType} {props.special_code}
       </div>
     </div>
   );
