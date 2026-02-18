@@ -44,7 +44,7 @@ const PrintBarcode = () => {
               orgName={barcode.OrgName}
               phNumber={barcode.PhNumber}
               itemName={barcode.ItemName}
-              quantity={barcode.Quantity}
+              quantity="1"
               mrp={barcode.MRP}
               special_code={barcode.SpecialCode}
               itemType={barcode.ItemType}
@@ -66,7 +66,7 @@ const PrintBarcode = () => {
               orgName={barcode.OrgName}
               phNumber={barcode.PhNumber}
               itemName={barcode.ItemName}
-              quantity={barcode.Quantity}
+              quantity="1"
               mrp={barcode.MRP}
               special_code={barcode.SpecialCode}
               itemType={barcode.ItemType}

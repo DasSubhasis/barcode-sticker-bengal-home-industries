@@ -103,7 +103,7 @@ const BarcodeLabel = React.forwardRef((props, ref) => {
         }}
       >
         <div>{props.orgName}</div>
-        <div>{props.phNumber}</div>
+        <div>Ph.No:{props.phNumber}</div>
       </div>
       <div
         style={{

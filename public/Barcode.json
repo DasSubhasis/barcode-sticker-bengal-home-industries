@@ -1,0 +1,13 @@
+{
+  "barcode": [
+    {
+      "orgName": "Bengal Home (Test)",
+      "phNumber": "8420837772",
+      "itemType": "SN",
+      "specialCode": "00009",
+      "itemName": "Item09",
+      "mrp": 550,
+      "quantity": "10"
+    }
+  ]
+}
