@@ -142,7 +142,7 @@ const BarcodeLabel = React.forwardRef((props, ref) => {
           paddingBottom: footerPanel.paddingBottom,
         }}
       >
-        {props.itemType} {props.special_code}
+        {props.special_code}
       </div>
     </div>
   );

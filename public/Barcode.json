@@ -1,13 +1,12 @@
 {
-  "barcode": [
-    {
-      "orgName": "Bengal Home (Test)",
-      "phNumber": "8420837772",
-      "itemType": "SN",
-      "specialCode": "00009",
-      "itemName": "Item09",
-      "mrp": 550,
-      "quantity": "10"
-    }
-  ]
+    "barcode": [
+        {
+            "orgName": "BENGAL HOME INDUSTRIES ASSOCIATION", 
+            "phNumber": "9432272179", 
+            "itemType": "SN", 
+            "specialCode": "SN260605161603", 
+            "itemName": "Item Test", 
+            "quantity": "2"
+        }
+    ]
 }
